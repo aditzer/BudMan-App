@@ -140,6 +140,7 @@ class _RegisterPageState extends State<RegisterPage> {
       isLoading=true;
     });
     List<String> response=await Authentication.register(username, email, password, mobile);
+    CustomUserMessage.sendMessage(response[1]);
     if(response[0]=="200"){
       Get.offAll(() => DashBoardPage());
     }

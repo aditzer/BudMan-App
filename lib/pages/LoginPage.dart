@@ -114,6 +114,7 @@ class _LoginPageState extends State<LoginPage> {
       isLoading=true;
     });
     List<String> response=await Authentication.login(email, password);
+    CustomUserMessage.sendMessage(response[1]);
     if(response[0]=="200"){
       Get.offAll(() => DashBoardPage());
     }

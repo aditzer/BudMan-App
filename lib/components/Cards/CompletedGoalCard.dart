@@ -69,7 +69,10 @@ class CompletedGoalCard extends StatelessWidget {
               center: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text((int.parse(savedAmount)>=int.parse(targetAmount))?"100%":((int.parse(savedAmount)/int.parse(targetAmount))*100).toInt().toString()+"%",style: TextStyle(fontSize: 30),),
+                  Tooltip(
+                      message: "Remaining amount: 0",
+                      child: Text((int.parse(savedAmount)>=int.parse(targetAmount))?"100%":((int.parse(savedAmount)/int.parse(targetAmount))*100).toInt().toString()+"%",style: TextStyle(fontSize: 30),),
+                  ),
                   Text(savedAmount+"/"+targetAmount,style: TextStyle(fontSize: 12),)
                 ],
               ),
@@ -79,15 +82,18 @@ class CompletedGoalCard extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  IconButton(
-                    icon: const Icon(
-                      Icons.delete,
-                      size: 30,
-                      color: Colors.red,
+                  Tooltip(
+                    message: "Delete",
+                    child: IconButton(
+                      icon: const Icon(
+                        Icons.delete,
+                        size: 30,
+                        color: Colors.red,
+                      ),
+                      onPressed: () async {
+                        await onClickDelete!();
+                      },
                     ),
-                    onPressed: () async {
-                      await onClickDelete!();
-                    },
                   )
                 ],
               ),

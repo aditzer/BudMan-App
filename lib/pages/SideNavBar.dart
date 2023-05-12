@@ -54,24 +54,26 @@ class _SideNavBarState extends State<SideNavBar> {
                       child: Column(
                         children: [
                           CircleAvatar(
-                              radius:width*0.13,
+                              backgroundColor: Colors.black,
+                              radius:width*0.125,
                               child: ClipOval(
                                 child: SizedBox(
                                   child: Image.asset("assets/images/budman_user_logo.jpeg"),
                                 ),
                               )
                           ),
-                          const SizedBox(height: 30),
+                          SizedBox(height: height*0.025),
                           Text(user.name,
                             style: GoogleFonts.publicSans(fontSize: 25,color: Colors.white),
-                          )
+                          ),
+                          SizedBox(height: height*0.01),
                         ],
                       ),
                     ),
                   ),
                 ),
                 ListTile(
-                  leading: Icon(FontAwesomeIcons.plus,),
+                  leading: Icon(FontAwesomeIcons.plus,color: Colors.green,),
                   title: Text('Add Transaction',style: TextStyle(fontSize: 17),),
                   onTap: () => Get.offAll(()=>AddTransaction(
                     expenseId:"",
@@ -84,54 +86,54 @@ class _SideNavBarState extends State<SideNavBar> {
                   )),
                 ),
                 ListTile(
-                  leading: Icon(FontAwesomeIcons.piggyBank),
+                  leading: Icon(FontAwesomeIcons.piggyBank,color: Colors.orange,),
                   title: Text('Add Account',style: TextStyle(fontSize: 17)),
                   onTap: () => Get.offAll(()=>AddAccount()),
                 ),
                 ListTile(
-                  leading: Icon(FontAwesomeIcons.crosshairs),
+                  leading: Icon(FontAwesomeIcons.crosshairs,color: Colors.red,),
                   title: Text('Add Goals',style: TextStyle(fontSize: 17)),
                   onTap: () => Get.offAll(()=>AddGoals()),
                 ),
                 Divider(),
                 ListTile(
-                  leading: Icon(Icons.dashboard),
+                  leading: Icon(Icons.dashboard,color: Colors.blue,),
                   title: Text('DashBoard',style: TextStyle(fontSize: 17)),
                   onTap: () => Get.offAll(()=>DashBoardPage()),
                 ),
                 ListTile(
-                  leading: Icon(FontAwesomeIcons.indianRupeeSign),
+                  leading: Icon(FontAwesomeIcons.indianRupeeSign,color: Colors.green),
                   title: Text('Transaction History',style: TextStyle(fontSize: 17)),
                   onTap: () => Get.offAll(()=>TransactionHistory()),
                 ),
                 ListTile(
-                  leading: Icon(FontAwesomeIcons.chartLine),
+                  leading: Icon(FontAwesomeIcons.chartLine,color: Colors.blue,),
                   title: Text('Deep Analysis',style: TextStyle(fontSize: 17)),
                   onTap: ()=>Get.offAll(()=>DeepAnalysis(),),
                 ),
                 ListTile(
-                  leading: Icon(FontAwesomeIcons.suitcase),
+                  leading: Icon(FontAwesomeIcons.suitcase,color: Colors.orange),
                   title: Text('My Accounts',style: TextStyle(fontSize: 17)),
                   onTap: () => Get.offAll(()=>AccountDetailsPage()),
                 ),
                 ListTile(
-                  leading: Icon(FontAwesomeIcons.bullseye),
+                  leading: Icon(FontAwesomeIcons.bullseye,color: Colors.red,),
                   title: Text('My Goals',style: TextStyle(fontSize: 17)),
                   onTap: () => Get.offAll(()=>MyGoals()),
                 ),
                 Divider(),
                 ListTile(
-                  leading: Icon(FontAwesomeIcons.user),
+                  leading: Icon(FontAwesomeIcons.user,color: Colors.black,),
                   title: Text('My Profile',style: TextStyle(fontSize: 17)),
                   onTap: () => Get.offAll(()=>MyProfile(name: user.name, email: user.email, mobile: user.contact)),
                 ),
                 ListTile(
-                  leading: Icon(FontAwesomeIcons.lock),
+                  leading: Icon(FontAwesomeIcons.lock,color: Colors.black),
                   title: Text('Change Password',style: TextStyle(fontSize: 17)),
                   onTap: () => Get.offAll(()=>ChangePassword()),
                 ),
                 ListTile(
-                  leading: Icon(FontAwesomeIcons.rightFromBracket),
+                  leading: Icon(FontAwesomeIcons.rightFromBracket,color: Colors.black),
                   title: Text('Logout',style: TextStyle(fontSize: 17)),
                   onTap: () => showDialog<String>(
                     context: context,

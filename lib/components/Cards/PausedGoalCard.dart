@@ -71,7 +71,9 @@ class PausedGoalCard extends StatelessWidget {
               center: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text((int.parse(savedAmount)>=int.parse(targetAmount))?"100%":((int.parse(savedAmount)/int.parse(targetAmount))*100).toInt().toString()+"%",style: TextStyle(fontSize: 30),),
+                  Tooltip(
+                      message: (int.parse(savedAmount) >= int.parse(targetAmount))?"Remaining amount: 0":"Remaining amount: "+(int.parse(targetAmount)-int.parse(savedAmount)).toString(),
+                      child: Text((int.parse(savedAmount)>=int.parse(targetAmount))?"100%":((int.parse(savedAmount)/int.parse(targetAmount))*100).toInt().toString()+"%",style: TextStyle(fontSize: 30),)),
                   Text(savedAmount+"/"+targetAmount,style: TextStyle(fontSize: 12),)
                 ],
               ),
@@ -81,37 +83,46 @@ class PausedGoalCard extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  IconButton(
-                    icon: const Icon(
-                      Icons.play_circle_fill,
-                      size: 30,
-                      color: Colors.blue,
+                  Tooltip(
+                    message: "Activate Goal",
+                    child: IconButton(
+                      icon: const Icon(
+                        Icons.play_circle_fill,
+                        size: 30,
+                        color: Colors.blue,
+                      ),
+                      onPressed: () async {
+                        await onClickStart!();
+                      },
                     ),
-                    onPressed: () async {
-                      await onClickStart!();
-                    },
                   ),
                   SizedBox(width: 10,),
-                  IconButton(
-                    icon: const Icon(
-                      Icons.check,
-                      size: 30,
-                      color: Colors.green,
+                  Tooltip(
+                    message: "Complete Goal",
+                    child: IconButton(
+                      icon: const Icon(
+                        Icons.check,
+                        size: 30,
+                        color: Colors.green,
+                      ),
+                      onPressed: () async {
+                        await onClickComplete!();
+                      },
                     ),
-                    onPressed: () async {
-                      await onClickComplete!();
-                    },
                   ),
                   SizedBox(width: 10,),
-                  IconButton(
-                    icon: const Icon(
-                      Icons.delete,
-                      size: 30,
-                      color: Colors.red,
+                  Tooltip(
+                    message: "Delete",
+                    child: IconButton(
+                      icon: const Icon(
+                        Icons.delete,
+                        size: 30,
+                        color: Colors.red,
+                      ),
+                      onPressed: () async {
+                        await onClickDelete!();
+                      },
                     ),
-                    onPressed: () async {
-                      await onClickDelete!();
-                    },
                   )
                 ],
               ),

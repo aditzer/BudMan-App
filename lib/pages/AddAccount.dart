@@ -126,10 +126,6 @@ class _AddAccountState extends State<AddAccount> {
       CustomUserMessage.sendMessage("Account Name cannot be empty!");
       return;
     }
-    else if(accountNumberController.text.isEmpty || !accountNumberController.text.isNumericOnly){
-      CustomUserMessage.sendMessage("Invalid Account Number!");
-      return;
-    }
     else if(accountBalanceController.text.isEmpty || !accountBalanceController.text.isNumericOnly){
       CustomUserMessage.sendMessage("Invalid Account Balance!");
       return;
